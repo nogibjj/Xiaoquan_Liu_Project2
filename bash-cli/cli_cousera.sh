@@ -13,7 +13,7 @@
 #Generate phrase 'N' times
 phrase_generator(){
     for ((i=0; i<$1; i++)); do
-        echo "$2"
+        echo "You entered phrase: $2"
     done
 }
 
@@ -24,11 +24,11 @@ do
 key="$1"
 
 case $key in
-    -c|--count)
+    -c|--number)
     COUNT="$2"
     shift
     ;;
-    -p|--phrase)
+    -p|--message)
     PHRASE="$2"
     shift
     ;;
