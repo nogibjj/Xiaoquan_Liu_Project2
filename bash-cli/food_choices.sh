@@ -1,8 +1,8 @@
 #!/bin/bash
 #output looks like this:
 #
-##./food_choice.sh --choose "Apple"   
-# Eat Yogurt with your Apple
+##./food_choices.sh --choose "Yogurt"   
+# (emoji)Eat Yogurt with Frozen Fruits!
 
 
 
@@ -12,12 +12,12 @@ food_choice(){
 	echo -en "   \u$rand"
     sleep 1
 
-    if [ "$1" = "Apple" ]; then
-    echo "Eat Yogurt with your Apple"
+    if [ "$1" = "Yogurt" ]; then
+    echo "Eat Yogurt with Frozen Fruits!"
 elif [ "$1" = "Milk" ]; then
     echo "Eat Cereal with your Milk"
-elif [ "$1" = "Advocado" ]; then
-    echo "Try smash Advocado with boiled Eggs, add some pepper and salt!"
+elif [ "$1" = "Avocado" ]; then
+    echo "Try smashing avocado with boiled Eggs. Add some pepper and salt!"
 else
     echo "Eat your {$1} by itself!"
 fi
