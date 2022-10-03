@@ -69,9 +69,57 @@ def get_word_frequency(word):
     click.echo(my_dict[word])
 
 
+@click.command(name="Common")
+def word_common():
+    """
+    The most commonly used word in the English word dictionary
+    """
+    my_dict = {}
+    response = requests.get("https://norvig.com/ngrams/count_1w.txt")
+    if response.status_code:
+        data = response.text
+        for i, line in enumerate(data.split("\n")):
+            if "\t" in line:
+                key = line.split("\t")[0]
+                value = line.split("\t")[1]
+                my_dict[key] = int(value)
+    sum = 0
+    for i in list(my_dict.values()):
+        sum += i
+    my_dict_prob = {word: value / sum for word, value in my_dict.items()}
+    result = max(my_dict.keys(), key=my_dict_prob.get)
+    re = [result, my_dict[result], my_dict_prob[result]]
+    click.echo(re)
+
+
+@click.command(name="Rare")
+def word_rare():
+    """
+    The most rarely used word in the English word dictionary
+    """
+    my_dict = {}
+    response = requests.get("https://norvig.com/ngrams/count_1w.txt")
+    if response.status_code:
+        data = response.text
+        for i, line in enumerate(data.split("\n")):
+            if "\t" in line:
+                key = line.split("\t")[0]
+                value = line.split("\t")[1]
+                my_dict[key] = int(value)
+    sum = 0
+    for i in list(my_dict.values()):
+        sum += i
+    my_dict_prob = {word: value / sum for word, value in my_dict.items()}
+    result = min(my_dict.keys(), key=my_dict_prob.get)
+    re = [result, my_dict[result], my_dict_prob[result]]
+    click.echo(re)
+
+
 get_group.add_command(get_word_list)
 get_group.add_command(word_count)
 get_group.add_command(get_word_frequency)
+get_group.add_command(word_common)
+get_group.add_command(word_rare)
 
 
 wordfrequency.add_command(get_group)
