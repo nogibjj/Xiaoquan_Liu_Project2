@@ -1,6 +1,16 @@
 import click
 import requests
 
+my_dict = {}
+response = requests.get("https://norvig.com/ngrams/count_1w.txt")
+if response.status_code:
+    data = response.text
+    for i, line in enumerate(data.split("\n")):
+        if "\t" in line:
+            key = line.split("\t")[0]
+            value = line.split("\t")[1]
+            my_dict[key] = int(value)
+
 
 @click.group()
 def wordfrequency():
@@ -22,15 +32,6 @@ def get_word_list():
     """
     Gets words in the English word dictionary!
     """
-    my_dict = {}
-    response = requests.get("https://norvig.com/ngrams/count_1w.txt")
-    if response.status_code:
-        data = response.text
-        for i, line in enumerate(data.split("\n")):
-            if "\t" in line:
-                key = line.split("\t")[0]
-                value = line.split("\t")[1]
-                my_dict[key] = value
     click.echo(my_dict.keys())
 
 
@@ -39,15 +40,6 @@ def word_count():
     """
     How many words in the English word dictionary?
     """
-    my_dict = {}
-    response = requests.get("https://norvig.com/ngrams/count_1w.txt")
-    if response.status_code:
-        data = response.text
-        for i, line in enumerate(data.split("\n")):
-            if "\t" in line:
-                key = line.split("\t")[0]
-                value = line.split("\t")[1]
-                my_dict[key] = value
     click.echo(len(my_dict))
 
 
@@ -57,15 +49,6 @@ def get_word_frequency(word):
     """
     Gets the word frequency!
     """
-    my_dict = {}
-    response = requests.get("https://norvig.com/ngrams/count_1w.txt")
-    if response.status_code:
-        data = response.text
-        for i, line in enumerate(data.split("\n")):
-            if "\t" in line:
-                key = line.split("\t")[0]
-                value = line.split("\t")[1]
-                my_dict[key] = value
     click.echo(my_dict[word])
 
 
@@ -74,15 +57,6 @@ def word_common():
     """
     The most commonly used word in the English word dictionary
     """
-    my_dict = {}
-    response = requests.get("https://norvig.com/ngrams/count_1w.txt")
-    if response.status_code:
-        data = response.text
-        for i, line in enumerate(data.split("\n")):
-            if "\t" in line:
-                key = line.split("\t")[0]
-                value = line.split("\t")[1]
-                my_dict[key] = int(value)
     sum = 0
     for i in list(my_dict.values()):
         sum += i
@@ -97,15 +71,6 @@ def word_rare():
     """
     The most rarely used word in the English word dictionary
     """
-    my_dict = {}
-    response = requests.get("https://norvig.com/ngrams/count_1w.txt")
-    if response.status_code:
-        data = response.text
-        for i, line in enumerate(data.split("\n")):
-            if "\t" in line:
-                key = line.split("\t")[0]
-                value = line.split("\t")[1]
-                my_dict[key] = int(value)
     sum = 0
     for i in list(my_dict.values()):
         sum += i
