@@ -1,0 +1,7 @@
+setup.py
+wordfrequency.egg-info/PKG-INFO
+wordfrequency.egg-info/SOURCES.txt
+wordfrequency.egg-info/dependency_links.txt
+wordfrequency.egg-info/entry_points.txt
+wordfrequency.egg-info/requires.txt
+wordfrequency.egg-info/top_level.txt
