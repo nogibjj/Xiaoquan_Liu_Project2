@@ -1,3 +1,4 @@
+from re import T
 import click
 import requests
 
@@ -61,9 +62,15 @@ def word_common():
     for i in list(my_dict.values()):
         sum += i
     my_dict_prob = {word: value / sum for word, value in my_dict.items()}
-    result = max(my_dict.keys(), key=my_dict_prob.get)
-    re = [result, my_dict[result], my_dict_prob[result]]
-    click.echo(re)
+    show = 0
+    for i in sorted(my_dict_prob, key=my_dict_prob.get, reverse=True):
+        if show < 10:
+            click.echo(f"{i} :{my_dict[i]} {my_dict_prob[i]}")
+            show += 1
+        else:
+            break
+    # result = max(my_dict.keys(), key=my_dict_prob.get)
+    # re = [result, my_dict[result], my_dict_prob[result]]
 
 
 @click.command(name="Rare")
@@ -75,9 +82,15 @@ def word_rare():
     for i in list(my_dict.values()):
         sum += i
     my_dict_prob = {word: value / sum for word, value in my_dict.items()}
-    result = min(my_dict.keys(), key=my_dict_prob.get)
-    re = [result, my_dict[result], my_dict_prob[result]]
-    click.echo(re)
+    show = 0
+    for i in sorted(my_dict_prob, key=my_dict_prob.get, reverse=False):
+        if show < 10:
+            click.echo(f"{i} :{my_dict[i]} {my_dict_prob[i]}")
+            show += 1
+        else:
+            break
+    # result = min(my_dict.keys(), key=my_dict_prob.get)
+    # re = [result, my_dict[result], my_dict_prob[result]]
 
 
 get_group.add_command(get_word_list)
