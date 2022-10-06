@@ -11,7 +11,9 @@ For this project, I tried to build two Bash Command-Line tools. One was written 
   Following this formula, I made a simple command-line tool in bash.
   
   if you call    **./food_choices.sh --choose "Yogurt"** from bash, it will return   **(a random emoji)Eat Yogurt with Frozen Fruits!**
- 
+
+
+
 ### 2. Word Frequency CLI Written in Python Script
 
 Written in Python script, this CLI performs five pieces of information about the [English word list/frequency data](https://norvig.com/ngrams/count_1w.txt).
