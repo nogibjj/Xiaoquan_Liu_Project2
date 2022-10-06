@@ -1,4 +1,4 @@
-# try_BASH_CLI
+# PROJECT2_BASH_CLI
 [![Python application test with Github Actions](https://github.com/nogibjj/try_Bash_cli/actions/workflows/main.yml/badge.svg)](https://github.com/nogibjj/try_Bash_cli/actions/workflows/main.yml)
 ## Building a Command-Line Tool in Bash
 
